@@ -1,0 +1,30 @@
+{
+  "name": "react-native-item-cell",
+  "version": "1.0.0",
+  "description": "React Native default style iOS item cell",
+  "main": "ItemCell.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/APSL/react-native-item-cell.git"
+  },
+  "keywords": [
+    "react-native",
+    "react-component",
+    "ios"
+  ],
+  "dependencies": {
+    "react-native-vector-icons": "^0.6.11"
+  },
+  "peerDependencies": {
+    "react-native": ">=0.10.0"
+  },
+  "author": "Alvaro Medina Ballester",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/APSL/react-native-item-cell/issues"
+  },
+  "homepage": "https://github.com/APSL/react-native-item-cell#readme"
+}
