@@ -1,5 +1,5 @@
 # react-native-item-cell
-A React Native default iOS item cell.
+A React Native default iOS item cell. The cell grows with the inner text.
 
 <p align="center">
 <img src="https://raw.githubusercontent.com/wiki/APSL/react-native-item-cell/itemcell.png" alt="ItemCell component screenshot" width="400">

@@ -19,13 +19,13 @@ class ItemCell extends Component {
         style={styles.container}>
         <View style={styles.viewContainer}>
           <View style={styles.paddingView} />
-          <View style={[styles.textContainer, styles.bottomBorder]}>
+          <View style={[styles.bottomBorder, styles.textContainer]}>
             <Text style={styles.text}>
               {this.props.children}
             </Text>
+            <Icon style={styles.chevron}
+              name='angle-right' size={22} />
           </View>
-          <Icon style={[styles.chevron, styles.bottomBorder]}
-            name='angle-right' size={22} />
         </View>
       </TouchableHighlight>
     )
@@ -40,7 +40,7 @@ ItemCell.propTypes = {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    height: 43,
+    paddingTop: 11.75,
     backgroundColor: 'white',
   },
   viewContainer: {
@@ -55,6 +55,7 @@ const styles = StyleSheet.create({
   textContainer: {
     flex: 1,
     flexDirection: 'row',
+    paddingBottom: 11.75,
   },
   text: {
     flex: 1,
@@ -65,9 +66,8 @@ const styles = StyleSheet.create({
   chevron: {
     width: 25,
     paddingRight: 15,
-    alignItems: 'center',
     color: '#C8C7CC',
-    backgroundColor: 'transparent',
+    alignSelf: 'center',
   },
   bottomBorder: {
     borderBottomWidth: 1/2,
