@@ -30,9 +30,12 @@ var items = React.createClass({
       ds: dataSource.cloneWithRows(items)
     };
   },
-  _renderRow: function(rowData) {
+  _renderRow: function(rowData, sectionID, rowID, highlightRow) {
+    var disclosure = (rowID % 2 === 0) ? true : false;
     return (
-      <ItemCell>{rowData}</ItemCell>
+      <ItemCell showDisclosureIndicator={disclosure}>
+        {rowData}
+      </ItemCell>
     );
   },
   render: function() {
@@ -41,7 +44,7 @@ var items = React.createClass({
         contentInset={{top: 0}}
         automaticallyAdjustContentInsets={false}
         dataSource={this.state.ds}
-        renderRow={(rowData) => this._renderRow(rowData)}
+        renderRow={(rowData, sectionID, rowID, highlightRow) => this._renderRow(rowData, sectionID, rowID, highlightRow)}
       />
     );
   }

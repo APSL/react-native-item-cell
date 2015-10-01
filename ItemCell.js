@@ -2,6 +2,12 @@ import React, { Component, View, Text, TouchableHighlight, PropTypes, StyleSheet
 import Icon from 'react-native-vector-icons/FontAwesome'
 
 class ItemCell extends Component {
+  _renderDisclosureIndicator (render) {
+    if (render) {
+      return <Icon style={styles.chevron} name='angle-right' size={22} />
+    }
+  }
+
   render () {
     let touchableProps = {
       accessible: this.props.accessible,
@@ -23,8 +29,7 @@ class ItemCell extends Component {
             <Text style={styles.text}>
               {this.props.children}
             </Text>
-            <Icon style={styles.chevron}
-              name='angle-right' size={22} />
+            {this._renderDisclosureIndicator(this.props.showDisclosureIndicator)}
           </View>
         </View>
       </TouchableHighlight>
@@ -35,6 +40,7 @@ class ItemCell extends Component {
 ItemCell.propTypes = {
   ...TouchableHighlight.propTypes,
   children: PropTypes.string.isRequired,
+  showDisclosureIndicator: PropTypes.bool,
 }
 
 const styles = StyleSheet.create({
