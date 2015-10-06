@@ -1,6 +1,6 @@
 {
   "name": "react-native-item-cell",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "React Native default style iOS item cell",
   "main": "ItemCell.js",
   "scripts": {
