@@ -1,7 +1,7 @@
-import React, { Component, View, Text, TouchableHighlight, PropTypes, StyleSheet } from 'react-native'
+import React, { View, Text, TouchableHighlight, PropTypes, StyleSheet } from 'react-native'
 import Icon from 'react-native-vector-icons/FontAwesome'
 
-class ItemCell extends Component {
+class ItemCell extends React.Component {
   _renderDisclosureIndicator (render) {
     if (render) {
       return <Icon style={styles.chevron} name='angle-right' size={22} />
@@ -9,7 +9,7 @@ class ItemCell extends Component {
   }
 
   render () {
-    let touchableProps = {
+    const touchableProps = {
       accessible: this.props.accessible,
       delayLongPress: this.props.delayLongPress,
       delayPressIn: this.props.delayPressIn,
@@ -76,7 +76,7 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
   },
   bottomBorder: {
-    borderBottomWidth: 1/2,
+    borderBottomWidth: 1,
     borderBottomColor: '#C8C7CC',
     borderStyle: 'solid',
   }
