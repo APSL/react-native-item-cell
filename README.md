@@ -25,7 +25,12 @@ Install ``FontAwesome`` from the awesome Joel Oblador's ``react-native-vector-ic
 </ItemCell>
 ```
 
-You can also provide the ``showDisclosureIndicator`` flag to show a small arrow at the right side of the cell. See the included example for more options.
+## Prop API
+
+| Prop | Type | Description |
+|------|------|-------------|
+|``showDisclosureIndicator`` | ``bool`` | Shows a small arrow at the right side of the cell. |
+|``icon`` | ``string`` | URI to render left icon |
 
 ## License
 

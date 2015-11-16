@@ -1,15 +1,31 @@
-import React, { View, Text, TouchableHighlight, PropTypes, StyleSheet } from 'react-native'
+import React, { Component, View, Text, Image, TouchableHighlight, PropTypes, StyleSheet } from 'react-native'
 import Icon from 'react-native-vector-icons/FontAwesome'
 
-class ItemCell extends React.Component {
-  _renderDisclosureIndicator (render) {
-    if (render) {
+class ItemCell extends Component {
+  _renderDisclosureIndicator () {
+    if (this.props.showDisclosureIndicator) {
       return <Icon style={styles.chevron} name='angle-right' size={22} />
     }
   }
 
+  _renderIcon () {
+    if (this.props.icon) {
+      return (
+        <View style={styles.iconContainer}>
+          <View style={styles.paddingView} />
+          <Image style={styles.icon}
+            source={{uri: this.props.icon}}
+            resizeMode='cover'
+          />
+          <View style={styles.paddingView} />
+        </View>
+      )
+    }
+    return <View style={styles.paddingView} />
+  }
+
   render () {
-    const touchableProps = {
+    let touchableProps = {
       accessible: this.props.accessible,
       delayLongPress: this.props.delayLongPress,
       delayPressIn: this.props.delayPressIn,
@@ -24,12 +40,16 @@ class ItemCell extends React.Component {
         underlayColor='#D9D9D9'
         style={styles.container}>
         <View style={styles.viewContainer}>
-          <View style={styles.paddingView} />
-          <View style={[styles.bottomBorder, styles.textContainer]}>
-            <Text style={styles.text}>
-              {this.props.children}
-            </Text>
-            {this._renderDisclosureIndicator(this.props.showDisclosureIndicator)}
+          <View style={styles.leftContainer}>
+            {this._renderIcon()}
+          </View>
+          <View style={styles.bottomBorder}>
+            <View style={styles.textContainer}>
+              <Text style={styles.text}>
+                {this.props.children}
+              </Text>
+              {this._renderDisclosureIndicator()}
+            </View>
           </View>
         </View>
       </TouchableHighlight>
@@ -41,45 +61,68 @@ ItemCell.propTypes = {
   ...TouchableHighlight.propTypes,
   children: PropTypes.string.isRequired,
   showDisclosureIndicator: PropTypes.bool,
+  icon: PropTypes.string,
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 11.75,
+    flexDirection: 'row',
     backgroundColor: 'white',
   },
   viewContainer: {
     flex: 1,
     flexDirection: 'row',
-    backgroundColor: 'transparent',
+    backgroundColor: 'white',
+    alignItems: 'center',
+  },
+  leftContainer: {
+    marginTop: 5,
+    marginBottom: 5,
+  },
+  bottomBorder: {
+    flex: 1,
+    borderBottomWidth: 1/2,
+    borderBottomColor: '#C8C7CC',
+    borderStyle: 'solid',
   },
   paddingView: {
     width: 15,
-    backgroundColor: 'transparent',
+    backgroundColor: 'white',
   },
   textContainer: {
     flex: 1,
     flexDirection: 'row',
-    paddingBottom: 11.75,
+    marginTop: 10,
+    marginBottom: 10,
+    backgroundColor: 'white',
+    alignItems: 'center',
   },
   text: {
     flex: 1,
     fontSize: 16,
     alignSelf: 'center',
-    backgroundColor: 'transparent',
+    backgroundColor: 'white',
   },
   chevron: {
     width: 25,
     paddingRight: 15,
     color: '#C8C7CC',
     alignSelf: 'center',
+    backgroundColor: 'white',
   },
-  bottomBorder: {
-    borderBottomWidth: 1,
-    borderBottomColor: '#C8C7CC',
-    borderStyle: 'solid',
-  }
+  iconContainer: {
+    alignItems: 'center',
+    width: 59,
+    flexDirection: 'row',
+    backgroundColor: 'white',
+  },
+  icon: {
+    width: 29,
+    height: 29,
+    backgroundColor: '#999',
+    borderRadius: 8,
+  },
 })
 
 export default ItemCell

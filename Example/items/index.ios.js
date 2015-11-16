@@ -21,7 +21,8 @@ var items = React.createClass({
       'Item 2',
       'Item 3',
       'Settings',
-      'It appears that the systematic use of complex symbols can be defined in such a way as to impose the extended c-command discussed in connection with (34).'
+      'It appears that the systematic use of complex symbols can be defined in such a way as to impose the extended c-command discussed in connection with (34).',
+      'With this clarification, any associated supporting element is unspecified with respect to a corpus of utterance tokens upon which conformity has been defined by the paired utterance test.'
     ];
     var dataSource = new ListView.DataSource({
       rowHasChanged: (r1, r2) => r1 !== r2
@@ -31,6 +32,22 @@ var items = React.createClass({
     };
   },
   _renderRow: function(rowData, sectionID, rowID, highlightRow) {
+    if (rowID === '1') {
+      return (
+        <ItemCell
+          icon='http://sourcefreeze.com/wp-content/uploads/2015/04/react-native.png'>
+          Icon - {rowData}
+        </ItemCell>
+      )
+    }
+    if (rowID === '5') {
+      return (
+        <ItemCell
+          icon='https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png'>
+          Icon - {rowData}
+        </ItemCell>
+      )
+    }
     var disclosure = (rowID % 2 === 0) ? true : false;
     return (
       <ItemCell showDisclosureIndicator={disclosure}>
