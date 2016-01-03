@@ -14,8 +14,8 @@ class ItemCell extends Component {
         <View style={this._styles.iconContainer}>
           <View style={this._styles.paddingView} />
           <Image style={this._styles.icon}
-           source={{uri: this.props.icon}}
-           resizeMode='cover'
+                 source={{uri: this.props.icon}}
+                 resizeMode='cover'
           />
           <View style={this._styles.paddingView} />
         </View>
@@ -28,7 +28,7 @@ class ItemCell extends Component {
     this._styles = {
       container: [styles.container, {backgroundColor: this.props.backgroundColor || 'white'}],
       viewContainer: [styles.viewContainer, {backgroundColor: this.props.backgroundColor || 'white'}],
-      text: [styles.text, {backgroundColor: this.props.backgroundColor || 'white',color: this.props.textColor || '#000000'}],
+      text: [styles.text, {backgroundColor: this.props.backgroundColor || 'white',color: this.props.textColor || '#000000', fontSize: this.props.textFontSize || 23}],
       textContainer: [styles.textContainer, {backgroundColor: this.props.backgroundColor || 'white'}],
       bottomBorder: [styles.bottomBorder, {borderBottomColor: this.props.separatorColor || '#C8C7CC'}],
       paddingView: [styles.paddingView, {backgroundColor: this.props.backgroundColor || 'white'}],
@@ -90,6 +90,7 @@ ItemCell.propTypes = {
   iconBackgroundColor: PropTypes.string,
   chevronColor: PropTypes.string,
   textColor: PropTypes.string,
+  textFontSize: PropTypes.number,
 }
 
 const styles = StyleSheet.create({
