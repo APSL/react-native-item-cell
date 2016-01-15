@@ -30,7 +30,8 @@ Install ``FontAwesome`` from the awesome Joel Oblador's ``react-native-vector-ic
 | Prop | Type | Description |
 |------|------|-------------|
 |``showDisclosureIndicator`` | ``bool`` | Shows a small arrow at the right side of the cell. |
-|``icon`` | ``string`` | URI to render left icon |
+|``icon`` | ``{uri: string}`` object or ``require()`` | URI to render left icon with an URL for the image source or ``require`` for a local image source. |
+|``children`` | ``string`` | The inner text to render. |
 
 ## License
 

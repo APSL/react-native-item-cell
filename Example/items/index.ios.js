@@ -8,15 +8,13 @@ var React = require('react-native');
 var {
   AppRegistry,
   StyleSheet,
-  Text,
-  View,
   ListView,
 } = React;
 import ItemCell from 'react-native-item-cell';
 
 var items = React.createClass({
   getInitialState: function() {
-    var items = [
+    var itemsArray = [
       'Item 1',
       'Item 2',
       'Item 3',
@@ -28,23 +26,30 @@ var items = React.createClass({
       rowHasChanged: (r1, r2) => r1 !== r2
     });
     return {
-      ds: dataSource.cloneWithRows(items)
+      ds: dataSource.cloneWithRows(itemsArray)
     };
   },
   _renderRow: function(rowData, sectionID, rowID, highlightRow) {
     if (rowID === '1') {
       return (
         <ItemCell
-          icon='http://sourcefreeze.com/wp-content/uploads/2015/04/react-native.png'>
-          Icon - {rowData}
+          icon={{uri: 'http://sourcefreeze.com/wp-content/uploads/2015/04/react-native.png'}}>
+          URL Icon - {rowData}
         </ItemCell>
       )
     }
     if (rowID === '5') {
       return (
         <ItemCell
-          icon='https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png'>
-          Icon - {rowData}
+          icon={{uri: 'https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png'}}>
+          URL Icon - {rowData}
+        </ItemCell>
+      )
+    }
+    if (rowID === '2') {
+      return (
+        <ItemCell showDisclosureIndicator={true} icon={require('./apsl.png')}>
+          Local image - {rowData}
         </ItemCell>
       )
     }
