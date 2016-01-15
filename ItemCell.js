@@ -1,7 +1,7 @@
-import React, { Component, View, Text, Image, TouchableHighlight, PropTypes, StyleSheet } from 'react-native'
+import React, { View, Text, Image, TouchableHighlight, PropTypes, StyleSheet } from 'react-native'
 import Icon from 'react-native-vector-icons/FontAwesome'
 
-class ItemCell extends Component {
+class ItemCell extends React.Component {
   _renderDisclosureIndicator () {
     if (this.props.showDisclosureIndicator) {
       return <Icon style={styles.chevron} name='angle-right' size={22} />
@@ -14,7 +14,7 @@ class ItemCell extends Component {
         <View style={styles.iconContainer}>
           <View style={styles.paddingView} />
           <Image style={styles.icon}
-            source={{uri: this.props.icon}}
+            source={this.props.icon}
             resizeMode='cover'
           />
           <View style={styles.paddingView} />
@@ -61,7 +61,12 @@ ItemCell.propTypes = {
   ...TouchableHighlight.propTypes,
   children: PropTypes.string.isRequired,
   showDisclosureIndicator: PropTypes.bool,
-  icon: PropTypes.string,
+  icon: PropTypes.oneOfType([
+    PropTypes.number,
+    PropTypes.shape({
+      uri: PropTypes.string,
+    }),
+  ]),
 }
 
 const styles = StyleSheet.create({
@@ -82,7 +87,7 @@ const styles = StyleSheet.create({
   },
   bottomBorder: {
     flex: 1,
-    borderBottomWidth: 1/2,
+    borderBottomWidth: 1 / 2,
     borderBottomColor: '#C8C7CC',
     borderStyle: 'solid',
   },
@@ -120,7 +125,7 @@ const styles = StyleSheet.create({
   icon: {
     width: 29,
     height: 29,
-    backgroundColor: '#999',
+    backgroundColor: '#333',
     borderRadius: 8,
   },
 })
