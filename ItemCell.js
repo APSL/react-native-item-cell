@@ -1,4 +1,4 @@
-import React, { View, Text, Image, TouchableHighlight, PropTypes, StyleSheet } from 'react-native'
+import React, { View, Text, Image, TouchableHighlight, PropTypes, StyleSheet, PixelRatio } from 'react-native'
 import Icon from 'react-native-vector-icons/FontAwesome'
 
 class ItemCell extends React.Component {
@@ -87,7 +87,7 @@ const styles = StyleSheet.create({
   },
   bottomBorder: {
     flex: 1,
-    borderBottomWidth: 1 / 2,
+    borderBottomWidth: 1 / PixelRatio.get(),
     borderBottomColor: '#C8C7CC',
     borderStyle: 'solid',
   },
@@ -100,14 +100,12 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     marginTop: 10,
     marginBottom: 10,
-    backgroundColor: 'white',
     alignItems: 'center',
   },
   text: {
     flex: 1,
     fontSize: 16,
     alignSelf: 'center',
-    backgroundColor: 'white',
   },
   chevron: {
     width: 25,
@@ -125,7 +123,6 @@ const styles = StyleSheet.create({
   icon: {
     width: 29,
     height: 29,
-    backgroundColor: '#333',
     borderRadius: 8,
   },
 })
