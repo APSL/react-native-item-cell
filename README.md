@@ -32,7 +32,14 @@ Install ``FontAwesome`` from the awesome Joel Oblador's ``react-native-vector-ic
 |``showDisclosureIndicator`` | ``bool`` | Shows a small arrow at the right side of the cell. |
 |``icon`` | ``{uri: string}`` object or ``require()`` | URI to render left icon with an URL for the image source or ``require`` for a local image source. |
 |``children`` | ``string`` | The inner text to render. |
+| `cellStyle` | `View.propTypes.style` | The container cell style. |
+| `textStyle` | `Text.propTypes.style` | The cell text style. |
+| `chevronColor` | `string` color code | The color code for the disclosure indicator. |
 
 ## License
 
 MIT
+
+## author
+
+Álvaro Medina Ballester <amedina at apsl.net>
