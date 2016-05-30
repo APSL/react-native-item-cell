@@ -1,4 +1,12 @@
-import React, { View, Text, Image, TouchableHighlight, PropTypes, StyleSheet, PixelRatio } from 'react-native'
+import React, { PropTypes } from 'react'
+import {
+  View,
+  Text,
+  Image,
+  TouchableHighlight,
+  StyleSheet,
+  PixelRatio
+} from 'react-native'
 import Icon from 'react-native-vector-icons/FontAwesome'
 
 class ItemCell extends React.Component {

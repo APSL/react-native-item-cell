@@ -8,7 +8,7 @@ A React Native default iOS item cell. The cell grows with the inner text.
 
 ## Install
 
-Install the package:
+RN>=0.18 is required for `1.4.x`. Install the package:
 
 ```bash
 $ npm i react-native-item-cell --save
