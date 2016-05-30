@@ -9,10 +9,18 @@ import {
 } from 'react-native'
 import Icon from 'react-native-vector-icons/FontAwesome'
 
+const IC_GREY_BORDER_COLOR = '#C8C7CC'
+
 class ItemCell extends React.Component {
   _renderDisclosureIndicator () {
     if (this.props.showDisclosureIndicator) {
-      return <Icon style={styles.chevron} name='angle-right' size={22} />
+      return (
+        <Icon
+          style={styles.chevron}
+          color={this.props.chevronColor || IC_GREY_BORDER_COLOR}
+          name='angle-right' size={22}
+        />
+      )
     }
   }
 
@@ -42,18 +50,18 @@ class ItemCell extends React.Component {
       onPress: this.props.onPress,
       onPressIn: this.props.onPressIn,
       onPressOut: this.props.onPressOut,
+      underlayColor: this.props.underlayColor || '#D9D9D9'
     }
     return (
       <TouchableHighlight {...touchableProps}
-        underlayColor='#D9D9D9'
-        style={styles.container}>
+        style={[styles.container, this.props.cellStyle]}>
         <View style={styles.viewContainer}>
           <View style={styles.leftContainer}>
             {this._renderIcon()}
           </View>
           <View style={styles.bottomBorder}>
             <View style={styles.textContainer}>
-              <Text style={styles.text}>
+              <Text style={[styles.text, this.props.textStyle]}>
                 {this.props.children}
               </Text>
               {this._renderDisclosureIndicator()}
@@ -69,6 +77,9 @@ ItemCell.propTypes = {
   ...TouchableHighlight.propTypes,
   children: PropTypes.string.isRequired,
   showDisclosureIndicator: PropTypes.bool,
+  cellStyle: View.propTypes.style,
+  textStyle: Text.propTypes.style,
+  chevronColor: PropTypes.string,
   icon: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.shape({
@@ -86,7 +97,6 @@ const styles = StyleSheet.create({
   viewContainer: {
     flex: 1,
     flexDirection: 'row',
-    backgroundColor: 'white',
     alignItems: 'center',
   },
   leftContainer: {
@@ -96,12 +106,11 @@ const styles = StyleSheet.create({
   bottomBorder: {
     flex: 1,
     borderBottomWidth: 1 / PixelRatio.get(),
-    borderBottomColor: '#C8C7CC',
+    borderBottomColor: IC_GREY_BORDER_COLOR,
     borderStyle: 'solid',
   },
   paddingView: {
     width: 15,
-    backgroundColor: 'white',
   },
   textContainer: {
     flex: 1,
@@ -118,15 +127,12 @@ const styles = StyleSheet.create({
   chevron: {
     width: 25,
     paddingRight: 15,
-    color: '#C8C7CC',
     alignSelf: 'center',
-    backgroundColor: 'white',
   },
   iconContainer: {
     alignItems: 'center',
     width: 59,
     flexDirection: 'row',
-    backgroundColor: 'white',
   },
   icon: {
     width: 29,
