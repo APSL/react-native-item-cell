@@ -1,17 +1,24 @@
+/* @flow */
+
 import React, { PropTypes } from 'react'
 import {
   View,
   Text,
   Image,
-  TouchableHighlight,
   StyleSheet,
-  PixelRatio
+  PixelRatio,
+  TouchableHighlight,
 } from 'react-native'
 import Icon from 'react-native-vector-icons/FontAwesome'
+import shallowCompare from 'react-addons-shallow-compare'
 
 const IC_GREY_BORDER_COLOR = '#C8C7CC'
 
 class ItemCell extends React.Component {
+  shouldComponentUpdate(nextProps: Object, nextState: Object) {
+    return shallowCompare(this, nextProps, nextState)
+  }
+
   _renderDisclosureIndicator () {
     if (this.props.showDisclosureIndicator) {
       return (
@@ -28,16 +35,14 @@ class ItemCell extends React.Component {
     if (this.props.icon) {
       return (
         <View style={styles.iconContainer}>
-          <View style={styles.paddingView} />
-          <Image style={styles.icon}
+          <Image
+            style={styles.icon}
             source={this.props.icon}
             resizeMode='cover'
           />
-          <View style={styles.paddingView} />
         </View>
       )
     }
-    return <View style={styles.paddingView} />
   }
 
   render () {
@@ -53,19 +58,21 @@ class ItemCell extends React.Component {
       underlayColor: this.props.underlayColor || '#D9D9D9'
     }
     return (
-      <TouchableHighlight {...touchableProps}
-        style={[styles.container, this.props.cellStyle]}>
-        <View style={styles.viewContainer}>
+      <TouchableHighlight {...touchableProps}>
+        <View style={[styles.container, {backgroundColor: this.props.backgroundColor || 'white'}]}>
           <View style={styles.leftContainer}>
             {this._renderIcon()}
           </View>
-          <View style={styles.bottomBorder}>
-            <View style={styles.textContainer}>
-              <Text style={[styles.text, this.props.textStyle]}>
+          <View style={styles.rightContainer}>
+            <View style={styles.textIconContainer}>
+              <Text style={styles.text}>
                 {this.props.children}
               </Text>
-              {this._renderDisclosureIndicator()}
+              <View style={styles.disclosureContainer}>
+                {this._renderDisclosureIndicator()}
+              </View>
             </View>
+            <View style={styles.border} />
           </View>
         </View>
       </TouchableHighlight>
@@ -75,9 +82,9 @@ class ItemCell extends React.Component {
 
 ItemCell.propTypes = {
   ...TouchableHighlight.propTypes,
+  backgroundColor: PropTypes.string,
   children: PropTypes.string.isRequired,
   showDisclosureIndicator: PropTypes.bool,
-  cellStyle: View.propTypes.style,
   textStyle: Text.propTypes.style,
   chevronColor: PropTypes.string,
   icon: PropTypes.oneOfType([
@@ -90,54 +97,51 @@ ItemCell.propTypes = {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    flexDirection: 'row',
-    backgroundColor: 'white',
-  },
-  viewContainer: {
-    flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
+    minHeight: 43,
   },
   leftContainer: {
-    marginTop: 5,
-    marginBottom: 5,
+    width: 59,
   },
-  bottomBorder: {
+  rightContainer: {
     flex: 1,
-    borderBottomWidth: 1 / PixelRatio.get(),
-    borderBottomColor: IC_GREY_BORDER_COLOR,
-    borderStyle: 'solid',
   },
-  paddingView: {
-    width: 15,
-  },
-  textContainer: {
-    flex: 1,
+  textIconContainer: {
     flexDirection: 'row',
-    marginTop: 10,
-    marginBottom: 10,
+  },
+  disclosureContainer: {
+    width: 30,
+    flexDirection: 'row',
     alignItems: 'center',
-  },
-  text: {
-    flex: 1,
-    fontSize: 16,
-    alignSelf: 'center',
-  },
-  chevron: {
-    width: 25,
-    paddingRight: 15,
-    alignSelf: 'center',
+    justifyContent: 'center',
   },
   iconContainer: {
-    alignItems: 'center',
-    width: 59,
+    flex: 1,
     flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   icon: {
     width: 29,
     height: 29,
     borderRadius: 8,
+    backgroundColor: '#333'
+  },
+  border: {
+    height: 1 / PixelRatio.get(),
+    backgroundColor: IC_GREY_BORDER_COLOR,
+  },
+  text: {
+    flex: 1,
+    paddingTop: 12,
+    paddingBottom: 12,
+    fontSize: 15,
+  },
+  chevron: {
+    width: 25,
+    paddingRight: 15,
+    alignSelf: 'center',
   },
 })
 
