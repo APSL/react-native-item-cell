@@ -45,6 +45,27 @@ class ItemCell extends React.Component {
     }
   }
 
+  _renderText () {
+    const { children, subtitle } = this.props
+    if (subtitle) {
+      return (
+        <View style={styles.subtitleContainer}>
+          <Text style={[styles.text, {paddingBottom: 0, paddingTop: 6}]}>
+            {children}
+          </Text>
+          <Text style={styles.subtitle}>
+            {subtitle}
+          </Text>
+        </View>
+      )
+    }
+    return (
+      <Text style={styles.text}>
+        {this.props.children}
+      </Text>
+    )
+  }
+
   render () {
     let touchableProps = {
       accessible: this.props.accessible,
@@ -65,9 +86,7 @@ class ItemCell extends React.Component {
           </View>
           <View style={styles.rightContainer}>
             <View style={styles.textIconContainer}>
-              <Text style={styles.text}>
-                {this.props.children}
-              </Text>
+              {this._renderText()}
               <View style={styles.disclosureContainer}>
                 {this._renderDisclosureIndicator()}
               </View>
@@ -83,6 +102,7 @@ class ItemCell extends React.Component {
 ItemCell.propTypes = {
   ...TouchableHighlight.propTypes,
   backgroundColor: PropTypes.string,
+  subtitle: PropTypes.string,
   children: PropTypes.string.isRequired,
   showDisclosureIndicator: PropTypes.bool,
   textStyle: Text.propTypes.style,
@@ -137,6 +157,14 @@ const styles = StyleSheet.create({
     paddingTop: 12,
     paddingBottom: 12,
     fontSize: 15,
+  },
+  subtitle: {
+    fontSize: 11,
+    color: '#444',
+    paddingBottom: 6,
+  },
+  subtitleContainer: {
+    flex: 1,
   },
   chevron: {
     width: 25,
