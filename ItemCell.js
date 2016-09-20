@@ -22,13 +22,20 @@ class ItemCell extends React.Component {
   }
 
   _renderDisclosureIndicator () {
-    if (this.props.showDisclosureIndicator) {
+    const { showDisclosureIndicator, value } = this.props
+    if (showDisclosureIndicator && !value) {
       return (
         <Icon
           style={styles.chevron}
           color={this.props.chevronColor || IC_GREY_BORDER_COLOR}
           name='angle-right' size={22}
         />
+      )
+    } else if (value) {
+      return (
+        <Text style={styles.value}>
+          {value}
+        </Text>
       )
     }
   }
@@ -106,6 +113,7 @@ ItemCell.propTypes = {
   backgroundColor: PropTypes.string,
   subtitle: PropTypes.string,
   children: PropTypes.string.isRequired,
+  value: PropTypes.string,
   showDisclosureIndicator: PropTypes.bool,
   textStyle: Text.propTypes.style,
   chevronColor: PropTypes.string,
@@ -133,7 +141,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   disclosureContainer: {
-    width: 30,
+    minWidth: 30,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
@@ -174,6 +182,12 @@ const styles = StyleSheet.create({
     paddingRight: 15,
     alignSelf: 'center',
   },
+  value: {
+    fontSize: 15,
+    color: '#808080',
+    textAlign: 'right',
+    paddingRight: 15,
+  }
 })
 
 export default ItemCell
