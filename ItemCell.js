@@ -15,6 +15,8 @@ import shallowCompare from 'react-addons-shallow-compare'
 const IC_GREY_BORDER_COLOR = '#C8C7CC'
 
 class ItemCell extends React.Component {
+  state: Object
+
   shouldComponentUpdate(nextProps: Object, nextState: Object) {
     return shallowCompare(this, nextProps, nextState)
   }
@@ -122,7 +124,7 @@ const styles = StyleSheet.create({
     minHeight: 43,
   },
   leftContainer: {
-    width: 59,
+    minWidth: 15,
   },
   rightContainer: {
     flex: 1,
@@ -138,6 +140,7 @@ const styles = StyleSheet.create({
   },
   iconContainer: {
     flex: 1,
+    width: 59,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
