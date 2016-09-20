@@ -31,6 +31,7 @@ const items = React.createClass({
       return (
         <ItemCell
           subtitle='GraphQL is an amazing technology.'
+          value='7845643'
           icon={require('./graphql.png')}>
           Local assets icon
         </ItemCell>
@@ -53,7 +54,7 @@ const items = React.createClass({
     }
     if (rowID === '3') {
       return (
-        <ItemCell icon={require('./rn.png')}>
+        <ItemCell icon={require('./rn.png')} value='Is awesome!'>
           React Native
         </ItemCell>
       )
