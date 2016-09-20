@@ -33,6 +33,7 @@ Install ``FontAwesome`` from the awesome Joel Oblador's ``react-native-vector-ic
 |``icon`` | ``{uri: string}`` object or ``require()`` | URI to render left icon with an URL for the image source or ``require`` for a local image source. |
 |``children`` | ``string`` | The inner text to render. |
 | `subtitle` | `string` | An optional subtitle to render below the `children`. |
+| `value` | `string` | An optional value to display instead of the disclosure indicator. |
 | `backgroundColor` | `string` | The color code of the cell background color. |
 | `textStyle` | `Text.propTypes.style` | The cell text style. |
 | `chevronColor` | `string` color code | The color code for the disclosure indicator. |
