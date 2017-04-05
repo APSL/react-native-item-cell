@@ -76,7 +76,7 @@ class ItemCell extends React.Component {
   }
 
   render () {
-    let touchableProps = {
+    const touchableProps = {
       accessible: this.props.accessible,
       delayLongPress: this.props.delayLongPress,
       delayPressIn: this.props.delayPressIn,
@@ -128,7 +128,6 @@ ItemCell.propTypes = {
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
-    alignItems: 'center',
     minHeight: 43,
   },
   leftContainer: {
@@ -139,6 +138,8 @@ const styles = StyleSheet.create({
   },
   textIconContainer: {
     flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   disclosureContainer: {
     minWidth: 30,
@@ -176,6 +177,7 @@ const styles = StyleSheet.create({
   },
   subtitleContainer: {
     flex: 1,
+    minHeight: 43,
   },
   chevron: {
     width: 25,
