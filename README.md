@@ -11,7 +11,7 @@ A React Native default iOS item cell. The cell grows with the inner text.
 RN>=0.18 is required for `1.4.x`. Install the package:
 
 ```bash
-$ npm i react-native-item-cell --save
+$ yarn add react-native-item-cell
 ```
 
 Install ``FontAwesome`` from the awesome Joel Oblador's ``react-native-vector-icons``: https://github.com/oblador/react-native-vector-icons#installation
@@ -42,6 +42,6 @@ Install ``FontAwesome`` from the awesome Joel Oblador's ``react-native-vector-ic
 
 MIT
 
-## author
+## Author
 
 Álvaro Medina Ballester <amedina at apsl.net>
