@@ -8,11 +8,21 @@ A React Native default iOS item cell. The cell grows with the inner text.
 
 ## Install
 
-RN>=0.18 is required for `1.4.x`. Install the package:
+RN>=0.18 is required for `1.4.x`.
 
+### 1. Install the package:
+
+#### option: yarn 
 ```bash
 $ yarn add react-native-item-cell
 ```
+
+#### option: npm
+```bash
+$ npm install react-native-item-cell --save
+```
+
+### 2. Install the dependence:
 
 Install ``FontAwesome`` from the awesome Joel Oblador's ``react-native-vector-icons``: https://github.com/oblador/react-native-vector-icons#installation
 
@@ -30,8 +40,7 @@ Install ``FontAwesome`` from the awesome Joel Oblador's ``react-native-vector-ic
 | Prop | Type | Description |
 |------|------|-------------|
 |``showDisclosureIndicator`` | ``bool`` | Shows a small arrow at the right side of the cell. |
-|``icon`` | ``{uri: string}`` object or ``require()`` | URI to render left icon with an URL for the image source or ``require`` for a local image source. |
-|``children`` | ``string`` | The inner text to render. |
+|``icon`` | React component or ``{uri: string}`` object or ``require()`` | React component or URI to render left icon with an URL for the image source or ``require`` for a local image source. |
 | `subtitle` | `string` | An optional subtitle to render below the `children`. |
 | `value` | `string` | An optional value to display instead of the disclosure indicator. |
 | `backgroundColor` | `string` | The color code of the cell background color. |
