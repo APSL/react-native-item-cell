@@ -16,8 +16,7 @@
     "ios"
   ],
   "dependencies": {
-    "react-native-vector-icons": ">=1.0.4",
-    "react-addons-shallow-compare": "^15.3.1"
+    "react-native-vector-icons": ">=1.0.4"
   },
   "author": "Alvaro Medina Ballester",
   "license": "MIT",

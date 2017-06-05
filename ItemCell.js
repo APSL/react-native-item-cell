@@ -11,16 +11,11 @@ import {
   Platform
 } from 'react-native'
 import Icon from 'react-native-vector-icons/FontAwesome'
-import shallowCompare from 'react-addons-shallow-compare'
 
 const IC_GREY_BORDER_COLOR = '#C8C7CC'
 
-class ItemCell extends React.Component {
+class ItemCell extends React.PureComponent {
   state: Object
-
-  shouldComponentUpdate(nextProps: Object, nextState: Object) {
-    return shallowCompare(this, nextProps, nextState)
-  }
 
   _renderDisclosureIndicator () {
     const { showDisclosureIndicator, value } = this.props
