@@ -8,6 +8,7 @@ import {
   StyleSheet,
   PixelRatio,
   TouchableHighlight,
+  Platform
 } from 'react-native'
 import Icon from 'react-native-vector-icons/FontAwesome'
 import shallowCompare from 'react-addons-shallow-compare'
@@ -115,7 +116,6 @@ ItemCell.propTypes = {
   children: PropTypes.string.isRequired,
   value: PropTypes.string,
   showDisclosureIndicator: PropTypes.bool,
-  textStyle: Text.propTypes.style,
   chevronColor: PropTypes.string,
   icon: PropTypes.oneOfType([
     PropTypes.number,
@@ -177,7 +177,14 @@ const styles = StyleSheet.create({
   },
   subtitleContainer: {
     flex: 1,
-    minHeight: 43,
+    ...Platform.select({
+      ios: {
+        minHeight: 43,
+      },
+      android: {
+        minHeight: 48,
+      }
+    })
   },
   chevron: {
     width: 25,
