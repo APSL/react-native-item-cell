@@ -42,7 +42,14 @@ class ItemCell extends React.Component {
   }
 
   _renderIcon () {
-    if (this.props.icon) {
+    if (React.isValidElement(this.props.icon)) {
+      return (
+        <View style={styles.iconContainer}>
+          {this.props.icon}
+        </View>
+      )
+    }
+    else if (this.props.icon) {
       return (
         <View style={styles.iconContainer}>
           <Image
@@ -113,11 +120,11 @@ ItemCell.propTypes = {
   ...TouchableHighlight.propTypes,
   backgroundColor: PropTypes.string,
   subtitle: PropTypes.string,
-  children: PropTypes.string.isRequired,
   value: PropTypes.string,
   showDisclosureIndicator: PropTypes.bool,
   chevronColor: PropTypes.string,
   icon: PropTypes.oneOfType([
+    PropTypes.element,
     PropTypes.number,
     PropTypes.shape({
       uri: PropTypes.string,
